@@ -2,9 +2,12 @@ FROM python:3.12-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
+ENV DENO_INSTALL=/usr/local
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends ffmpeg ca-certificates \
+    && apt-get install -y --no-install-recommends ffmpeg ca-certificates curl unzip \
+    && curl -fsSL https://deno.land/install.sh | sh \
+    && deno --version \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
