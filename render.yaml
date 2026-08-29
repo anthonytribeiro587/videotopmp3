@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: videotopmp3-backend
+    runtime: docker
+    rootDir: backend
+    dockerfilePath: ./Dockerfile
+    autoDeploy: true
+    healthCheckPath: /health
+    envVars:
+      - key: ALLOWED_ORIGINS
+        sync: false
